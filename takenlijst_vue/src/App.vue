@@ -3,7 +3,7 @@
     <h1>Takenlijst</h1>
 
     <div class="add">
-      <input v-model="newTitle" placeholder="Nieuwe taak..." @keyup.enter="addtaak"/>
+      <input v-model="newtitel" placeholder="Nieuwe taak..." @keyup.enter="addtaak"/>
       <button @click="addtaak">Toevoegen</button>
     </div>
 
@@ -11,11 +11,11 @@
       <li v-for="taak in taken" :key="taak.id" class="row">
         <input type="checkbox" :checked="taak.done" @change="toggleDone(taak.id)"/>
 
-        <span v-if="editingId != taak.id" :class="{ done: taak.done }" class="title">
-          {{ taak.title }}
+        <span v-if="editingId != taak.id" :class="{ done: taak.done }" class="titel">
+          {{ taak.titel }}
         </span>
 
-        <input v-else v-model="editingTitle" @keyup.enter="saveEdit(taak.id)" @keyup.esc="cancelEdit"/>
+        <input v-else v-model="editingtitel" @keyup.enter="saveEdit(taak.id)" @keyup.esc="cancelEdit"/>
 
         <div class="actions" v-if="editingId != taak.id">
           <button @click="startEdit(taak)">Bewerk</button>
@@ -37,10 +37,10 @@
 import { usetaken } from "./app.js";
 
 const {
-  newTitle,
+  newtitel,
   taken,
   editingId,
-  editingTitle,
+  editingtitel,
   addtaak,
   removetaak,
   toggleDone,

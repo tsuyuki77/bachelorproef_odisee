@@ -3,11 +3,11 @@ import { ref, onMounted, watch } from "vue";
 const STORAGE_KEY = "taken";
 
 export function usetaken() {
-  const newTitle = ref("");
-  const taken = ref([]); // { id: number, title: string, done: boolean }
+  const newtitel = ref("");
+  const taken = ref([]); // { id: number, titel: string, done: boolean }
 
   const editingId = ref(null);
-  const editingTitle = ref("");
+  const editingtitel = ref("");
 
   // Load from localStorage
   onMounted(() => {
@@ -23,16 +23,16 @@ export function usetaken() {
 
   // Create
   function addtaak() {
-    const title = newTitle.value.trim();
-    if (!title) return;
+    const titel = newtitel.value.trim();
+    if (!titel) return;
 
     taken.value.push({
       id: Date.now(),
-      title,
+      titel,
       done: false,
     });
 
-    newTitle.value = "";
+    newtitel.value = "";
   }
 
   // Delete
@@ -49,31 +49,31 @@ export function usetaken() {
   // Start edit
   function startEdit(taak) {
     editingId.value = taak.id;
-    editingTitle.value = taak.title;
+    editingtitel.value = taak.titel;
   }
 
   // Cancel edit
   function cancelEdit() {
     editingId.value = null;
-    editingTitle.value = "";
+    editingtitel.value = "";
   }
 
   // Save edit
   function saveEdit(id) {
-    const title = editingTitle.value.trim();
-    if (!title) return;
+    const titel = editingtitel.value.trim();
+    if (!titel) return;
 
     const taak = taken.value.find((t) => t.id == id);
-    if (taak) taak.title = title;
+    if (taak) taak.titel = titel;
 
     cancelEdit();
   }
 
   return {
-    newTitle,
+    newtitel,
     taken,
     editingId,
-    editingTitle,
+    editingtitel,
     addtaak,
     removetaak,
     toggleDone,
