@@ -41,3 +41,28 @@ button {
   padding: 6px 10px;
   cursor: pointer;
 }
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.prioriteit-select {
+  padding: 8px;
+}
+
+.prioriteit-laag {
+  border-left: 4px solid #aaa;
+  padding-left: 6px;
+}
+
+.prioriteit-normaal {
+  border-left: 4px solid #f0a500;
+  padding-left: 6px;
+}
+
+.prioriteit-hoog {
+  border-left: 4px solid #e53935;
+  padding-left: 6px;
+}
