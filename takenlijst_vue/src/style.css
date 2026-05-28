@@ -66,3 +66,23 @@ button {
   border-left: 4px solid #e53935;
   padding-left: 6px;
 }
+
+/* Animaties via Vue <TransitionGroup> */
+.taak-lijst-enter-active,
+.taak-lijst-leave-active {
+  transition: all 0.3s ease;
+}
+
+.taak-lijst-enter-from {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.taak-lijst-leave-to {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.taak-lijst-move {
+  transition: transform 0.3s ease;
+}

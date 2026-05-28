@@ -2,9 +2,9 @@
   <div class="page">
     <h1>Takenlijst</h1>
     <TaskForm :onAdd="addtaak"/>
-    <ul>
+    <TransitionGroup name="taak-lijst" tag="ul">
       <TaskItem v-for="taak in taken" :key="taak.id" :taak="taak" :onToggle="toggleDone" :onRemove="removetaak" :onUpdate="updateTaak"/>
-    </ul>
+    </TransitionGroup>
     <p v-if="taken.length === 0">Nog geen taken.</p>
   </div>
 </template>
