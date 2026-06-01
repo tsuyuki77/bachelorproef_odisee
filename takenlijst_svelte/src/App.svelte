@@ -21,18 +21,31 @@
 
   // Create
   function addtaak(titel, prioriteit) {
+    const start = performance.now();
+
     taken.push({ id: Date.now(), titel, done: false, prioriteit });
     taken = taken;
     opslaan();
+
+    requestAnimationFrame(() => {
+    const einde = performance.now();
+    console.log(`[Svelte] Toevoegen: ${(einde - start).toFixed(2)} ms`);
+  });
   }
 
   // Delete
   function removetaak(id) {
+    const start = performance.now();
     for (let i = 0; i < taken.length; i++) {
       if (taken[i].id == id) { taken.splice(i, 1); break; }
     }
     opslaan();
     taken = taken;
+
+    requestAnimationFrame(() => {
+    const einde = performance.now();
+    console.log(`[Svelte] Verwijderen: ${(einde - start).toFixed(2)} ms`);
+  });
   }
 
   // Done toggle
@@ -46,11 +59,17 @@
 
   // Update
   function updateTaak(id, titel) {
+    const start = performance.now();
     for (let i = 0; i < taken.length; i++) {
       if (taken[i].id == id) { taken[i].titel = titel; break; }
     }
     opslaan();
     taken = taken;
+
+    requestAnimationFrame(() => {
+    const einde = performance.now();
+    console.log(`[Svelte] Aanpassen: ${(einde - start).toFixed(2)} ms`);
+  });
   }
 </script>
 

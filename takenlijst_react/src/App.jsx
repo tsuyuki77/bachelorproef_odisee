@@ -19,6 +19,8 @@ function App() {
 
   // Create
   function addtaak(titel, prioriteit) {
+    const start = performance.now();
+
     const nieuweTaken = [];
     for (let i = 0; i < taken.length; i++) {
       nieuweTaken.push(taken[i]);
@@ -26,14 +28,26 @@ function App() {
     nieuweTaken.push({ id: Date.now(), titel, done: false, prioriteit });
     setTaken(nieuweTaken);
     opslaan(nieuweTaken);
-  }
+
+    requestAnimationFrame(() => {
+    const einde = performance.now();
+    console.log(`[React] Toevoegen: ${(einde - start).toFixed(2)} ms`);
+  });
+  };
 
   // Delete
   function removetaak(id) {
+    const start = performance.now();
+
     const nieuweTaken = taken.filter((taak) => taak.id !== id);
     setTaken(nieuweTaken);
     opslaan(nieuweTaken);
-  }
+
+    requestAnimationFrame(() => {
+    const einde = performance.now();
+    console.log(`[React] Verwijderen: ${(einde - start).toFixed(2)} ms`);
+  });
+  };
 
   // Done toggle
   function toggleDone(id) {
@@ -51,6 +65,8 @@ function App() {
 
   // Update
   function updateTaak(id, titel) {
+    const start = performance.now();
+
     const nieuweTaken = [];
     for (let i = 0; i < taken.length; i++) {
       if (taken[i].id === id) {
@@ -61,7 +77,12 @@ function App() {
     }
     setTaken(nieuweTaken);
     opslaan(nieuweTaken);
-  }
+
+    requestAnimationFrame(() => {
+    const einde = performance.now();
+    console.log(`[React] Aanpassen: ${(einde - start).toFixed(2)} ms`);
+  });
+  };
 
   return (
     <div className="page">
